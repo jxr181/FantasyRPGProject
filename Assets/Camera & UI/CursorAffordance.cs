@@ -17,12 +17,12 @@ public class CursorAffordance : MonoBehaviour
 	void Start ()
     {
         cameraRaycaster = GetComponent<CameraRaycaster>();
+        cameraRaycaster.onLayerChange += OnLayerChanged; // Registering
 	}
 	
-	// Update is called once per frame
-	void LateUpdate ()
+	void OnLayerChanged (Layer newLayer)
     {
-        switch (cameraRaycaster.currentLayerHit)
+        switch (newLayer)
         {
             case Layer.Walkable:
                 Cursor.SetCursor(walkCursor, cursorHotspot, CursorMode.Auto);
@@ -42,3 +42,5 @@ public class CursorAffordance : MonoBehaviour
         }
 	}
 }
+
+// TODO Consider De-registing OnlayerChanged on leaving all game scenes
