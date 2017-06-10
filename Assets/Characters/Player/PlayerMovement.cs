@@ -9,9 +9,11 @@ public class PlayerMovement : MonoBehaviour
     CameraRaycaster cameraRaycaster;
     Vector3 currentClickTarget;
 
+    bool isInGamePadMode = false; // TODO consider making static
+
     [SerializeField] float moveStopWalkRadius = 0.2f;
         
-    private void Start()
+    void Start()
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
         m_Character = GetComponent<ThirdPersonCharacter>();
@@ -19,16 +21,46 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Fixed update is called in sync with physics
-    private void FixedUpdate()
+    void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.G)) // G for gamepad. TODO Allow player to remap later
+        {
+            isInGamePadMode = !isInGamePadMode; // Toggle mode
+        }
+
+        if (isInGamePadMode)
+        {
+            ProcessGamePadMovement();
+        }
+        else
+        {
+            ProcessMouseMovement();
+        }
+        
+    }
+
+    void ProcessGamePadMovement()
+    {
+        // read inputs
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+
+        // calculate camera relative direction to move:
+        Vector3 m_CamForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+        Vector3 m_Move = v * m_CamForward + h * Camera.main.transform.right;
+
+        m_Character.Move(m_Move, false, false);
+    }
+
+    void ProcessMouseMovement()
     {
         if (Input.GetMouseButton(0))
         {
-            print("Cursor raycast layer hit: " + cameraRaycaster.layerHit);
 
-            switch (cameraRaycaster.layerHit)
+            switch (cameraRaycaster.layerHit) 
             {
                 case Layer.Walkable:
-                    currentClickTarget = cameraRaycaster.hit.point;  
+                    currentClickTarget = cameraRaycaster.hit.point;
                     break;
 
                 case Layer.Enemy:
@@ -39,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
                     print("DON'T KNOW WHAT TO DO");
                     return;
             }
-            
+
         }
         var playerToClickPoint = currentClickTarget - transform.position;
         if (playerToClickPoint.magnitude >= moveStopWalkRadius)
@@ -50,7 +82,6 @@ public class PlayerMovement : MonoBehaviour
         {
             m_Character.Move(Vector3.zero, false, false);
         }
-        
     }
 }
 
