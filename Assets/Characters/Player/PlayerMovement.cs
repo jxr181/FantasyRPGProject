@@ -9,11 +9,11 @@ public class PlayerMovement : MonoBehaviour
     CameraRaycaster cameraRaycaster;
     Vector3 currentClickTarget;
 
+    [SerializeField] float moveStopWalkRadius = 0.2f;
 
     bool isInGamePadMode = false; 
 
-    [SerializeField] float moveStopWalkRadius = 0.2f;
-        
+       
     void Start()
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
                     break;
 
                 default:
-                    print("DON'T KNOW WHAT TO DO");
+                    print("Unexpected Layer Found");
                     return;
             }
 
@@ -78,12 +78,17 @@ public class PlayerMovement : MonoBehaviour
         var playerToClickPoint = currentClickTarget - transform.position;
         if (playerToClickPoint.magnitude >= moveStopWalkRadius)
         {
-            thirdPersonCharacter.Move(playerToClickPoint - transform.position, false, false);
+            thirdPersonCharacter.Move(playerToClickPoint, false, false);
         }
         else
         {
             thirdPersonCharacter.Move(Vector3.zero, false, false);
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        print("Draw Gizmos");
     }
 }
 
