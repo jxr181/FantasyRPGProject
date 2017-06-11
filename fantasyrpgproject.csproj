@@ -102,6 +102,9 @@
     <Compile Include="Assets\Camera &amp; UI\CameraFollow.cs" />
     <Compile Include="Assets\Camera &amp; UI\CameraRaycaster.cs" />
     <Compile Include="Assets\Camera &amp; UI\CursorAffordance.cs" />
+    <Compile Include="Assets\Characters\Enemies\Enemy.cs" />
+    <Compile Include="Assets\Characters\Enemies\EnemyHealthBar.cs" />
+    <Compile Include="Assets\Characters\Enemies\EnemyUI.cs" />
     <Compile Include="Assets\Characters\Player\Player.cs" />
     <Compile Include="Assets\Characters\Player\PlayerHealthBar.cs" />
     <Compile Include="Assets\Characters\Player\PlayerMovement.cs" />

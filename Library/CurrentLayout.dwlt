@@ -258,7 +258,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 1
-  controlID: 118
+  controlID: 68
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_MinSize: {x: 713, y: 492}
   m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 119
+  controlID: 69
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 492}
   m_MaxSize: {x: 14006, y: 14042}
   vertical: 1
-  controlID: 120
+  controlID: 70
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -468,14 +468,14 @@ MonoBehaviour:
     width: 957
     height: 536
   m_SceneLighting: 1
-  lastFramingTime: 4927.345837255707
+  lastFramingTime: 807.2304517042459
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.0002888441, y: 0.7876561, z: 0}
+    m_Target: {x: -0.102716565, y: 1.195908, z: 4.4259124}
     speed: 2
-    m_Value: {x: 0.0002888441, y: 0.7876561, z: 0}
+    m_Value: {x: -0.102716565, y: 1.195908, z: 4.4259124}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -498,13 +498,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.25726813, y: 0.44984448, z: -0.13709061, w: -0.84419143}
+    m_Target: {x: -0.13428813, y: 0.094086185, z: -0.012808968, w: -0.9863825}
     speed: 2
-    m_Value: {x: -0.25726813, y: 0.44984448, z: -0.13709061, w: -0.8441914}
+    m_Value: {x: -0.13428813, y: 0.094086185, z: -0.012808968, w: -0.9863825}
   m_Size:
-    m_Target: 3.4254649
+    m_Target: 5.245605
     speed: 2
-    m_Value: 3.4254649
+    m_Value: 5.245605
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -595,23 +595,23 @@ MonoBehaviour:
     height: 369
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
+    m_SelectedIDs: 06260000
     m_LastClickedID: 0
-    m_ExpandedIDs: befbffff00000000
+    m_ExpandedIDs: 92f7ffffecf8ffff4cfaffffa6fbffffbefbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Health Bar Mask
+      m_OriginalName: Health Bar Mask
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -2164
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 6}
     m_SearchString: 
@@ -657,19 +657,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Characters/Player
+    - Assets/Camera & UI
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Characters/Player
+  - Assets/Camera & UI
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\jeoma\Desktop\Unity Projects\repos\FantasyRPGProject
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c4260000
-    m_LastClickedID: 9924
-    m_ExpandedIDs: 000000005c2500004226000074270000ffffff7f
+    m_SelectedIDs: 8a250000
+    m_LastClickedID: 9610
+    m_ExpandedIDs: 000000005c250000382600004226000074270000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000aa5ffeff56350000903800002a4a000036260000f0260000969effff
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -778,7 +778,7 @@ MonoBehaviour:
     y: 643
     width: 959
     height: 375
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 133.95508}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: -205
