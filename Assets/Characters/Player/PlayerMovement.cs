@@ -1,28 +1,77 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityStandardAssets.Characters.ThirdPerson;
 
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(AICharacterControl))]
 [RequireComponent(typeof (ThirdPersonCharacter))]
+
 public class PlayerMovement : MonoBehaviour
 {
-    ThirdPersonCharacter thirdPersonCharacter;   // A reference to the ThirdPersonCharacter on the object
-    CameraRaycaster cameraRaycaster;
-    Vector3 currentClickTarget;
+    // TODO Solve fight with serializefield and const
+    [SerializeField] const int walkableLayerNumber = 8;
+    [SerializeField] const int enemyLayerNumber = 9;
 
-    [SerializeField] float moveStopWalkRadius = 0.2f;
+    ThirdPersonCharacter thirdPersonCharacter = null;   // A reference to the ThirdPersonCharacter on the object
+    AICharacterControl aiCharacterControl = null;
+    CameraRaycaster cameraRaycaster = null;
+    GameObject walkTarget = null;
+    //Vector3 currentClickTarget;
+    
 
-    bool isInGamePadMode = false; 
+    //bool isInGamePadMode = false; 
 
        
     void Start()
     {
         cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
         thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
-        currentClickTarget = transform.position;
+        aiCharacterControl = GetComponent<AICharacterControl>();
+        walkTarget = new GameObject("walkTarget");
+        //currentClickTarget = transform.position;
+
+        cameraRaycaster.notifyMouseClickObservers += ProcessMouseClick;
     }
 
-    
+    void ProcessMouseClick(RaycastHit raycastHit, int layerHit)
+    {
+        switch (layerHit)
+        {
+            case enemyLayerNumber:
+                GameObject enemy = raycastHit.collider.gameObject;
+                aiCharacterControl.SetTarget(enemy.transform);
+                break;
 
+            case walkableLayerNumber:
+                walkTarget.transform.position = raycastHit.point;
+                aiCharacterControl.SetTarget(walkTarget.transform);
+                break;
+
+            default:
+                Debug.LogWarning("Don't know how to handle mouse click for player movement");
+                return;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //TODO Make this get called again
     void ProcessGamePadMovement()
     {
         // read inputs
@@ -36,41 +85,11 @@ public class PlayerMovement : MonoBehaviour
         thirdPersonCharacter.Move(movement, false, false);
     }
 
-    //void ProcessMouseMovement()
-    //{
-    //    if (Input.GetMouseButton(0))
-    //    {
-
-    //        switch (cameraRaycaster.currentLayerHit) 
-    //        {
-    //            case Layer.Walkable:
-    //                currentClickTarget = cameraRaycaster.hit.point;
-    //                break;
-
-    //            case Layer.Enemy:
-    //                print("Not moving to enemy!");
-    //                break;
-
-    //            default:
-    //                print("Unexpected Layer Found");
-    //                return;
-    //        }
-
-    //    }
-    //    var playerToClickPoint = currentClickTarget - transform.position;
-    //    if (playerToClickPoint.magnitude >= moveStopWalkRadius)
-    //    {
-    //        thirdPersonCharacter.Move(playerToClickPoint, false, false);
-    //    }
-    //    else
-    //    {
-    //        thirdPersonCharacter.Move(Vector3.zero, false, false);
-    //    }
-    //}
+    
 
     void OnDrawGizmos()
     {
-        print("Draw Gizmos");
+        //print("Draw Gizmos");
     }
 }
 
