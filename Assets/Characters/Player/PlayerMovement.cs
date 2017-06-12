@@ -21,25 +21,7 @@ public class PlayerMovement : MonoBehaviour
         currentClickTarget = transform.position;
     }
 
-    // Fixed update is called in sync with physics
-    void FixedUpdate()
-    {
-        if (Input.GetKeyDown(KeyCode.G)) // G for gamepad. TODO Allow player to remap later
-        {
-            isInGamePadMode = !isInGamePadMode; // Toggle mode
-            currentClickTarget = transform.position; // Clear clickTarget
-        }
-
-        if (isInGamePadMode)
-        {
-            ProcessGamePadMovement();
-        }
-        else
-        {
-            ProcessMouseMovement();
-        }
-        
-    }
+    
 
     void ProcessGamePadMovement()
     {
@@ -54,37 +36,37 @@ public class PlayerMovement : MonoBehaviour
         thirdPersonCharacter.Move(movement, false, false);
     }
 
-    void ProcessMouseMovement()
-    {
-        if (Input.GetMouseButton(0))
-        {
+    //void ProcessMouseMovement()
+    //{
+    //    if (Input.GetMouseButton(0))
+    //    {
 
-            switch (cameraRaycaster.currentLayerHit) 
-            {
-                case Layer.Walkable:
-                    currentClickTarget = cameraRaycaster.hit.point;
-                    break;
+    //        switch (cameraRaycaster.currentLayerHit) 
+    //        {
+    //            case Layer.Walkable:
+    //                currentClickTarget = cameraRaycaster.hit.point;
+    //                break;
 
-                case Layer.Enemy:
-                    print("Not moving to enemy!");
-                    break;
+    //            case Layer.Enemy:
+    //                print("Not moving to enemy!");
+    //                break;
 
-                default:
-                    print("Unexpected Layer Found");
-                    return;
-            }
+    //            default:
+    //                print("Unexpected Layer Found");
+    //                return;
+    //        }
 
-        }
-        var playerToClickPoint = currentClickTarget - transform.position;
-        if (playerToClickPoint.magnitude >= moveStopWalkRadius)
-        {
-            thirdPersonCharacter.Move(playerToClickPoint, false, false);
-        }
-        else
-        {
-            thirdPersonCharacter.Move(Vector3.zero, false, false);
-        }
-    }
+    //    }
+    //    var playerToClickPoint = currentClickTarget - transform.position;
+    //    if (playerToClickPoint.magnitude >= moveStopWalkRadius)
+    //    {
+    //        thirdPersonCharacter.Move(playerToClickPoint, false, false);
+    //    }
+    //    else
+    //    {
+    //        thirdPersonCharacter.Move(Vector3.zero, false, false);
+    //    }
+    //}
 
     void OnDrawGizmos()
     {

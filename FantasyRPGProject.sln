@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyRPGProject", "Fantas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyRPGProject.Editor.Plugins", "FantasyRPGProject.Editor.Plugins.csproj", "{480887A7-8F40-9F34-F7F8-E4C0114FBC2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FantasyRPGProject.Editor", "FantasyRPGProject.Editor.csproj", "{C6871522-603B-963E-F636-49998AC3D2C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{480887A7-8F40-9F34-F7F8-E4C0114FBC2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{480887A7-8F40-9F34-F7F8-E4C0114FBC2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{480887A7-8F40-9F34-F7F8-E4C0114FBC2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6871522-603B-963E-F636-49998AC3D2C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6871522-603B-963E-F636-49998AC3D2C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6871522-603B-963E-F636-49998AC3D2C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6871522-603B-963E-F636-49998AC3D2C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
