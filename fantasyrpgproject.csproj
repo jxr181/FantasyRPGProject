@@ -108,12 +108,12 @@
     <Compile Include="Assets\Characters\Player\Player.cs" />
     <Compile Include="Assets\Characters\Player\PlayerHealthBar.cs" />
     <Compile Include="Assets\Characters\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\Scenes\GreenForest\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\Scenes\Assets\GreenForest\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Utility\Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SETUP &amp; STANDARDS.txt" />
-    <None Include="Assets\Scenes\Fantasy nature\Double Sided Shaders\Double Sided Transparent Diffuse Bump Cutout.shader" />
+    <None Include="Assets\Scenes\Assets\Fantasy nature\Double Sided Shaders\Double Sided Transparent Diffuse Bump Cutout.shader" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
