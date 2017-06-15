@@ -108,10 +108,10 @@
     <Compile Include="Assets\Characters\Player\Player.cs" />
     <Compile Include="Assets\Characters\Player\PlayerHealthBar.cs" />
     <Compile Include="Assets\Characters\Player\PlayerMovement.cs" />
-    <Compile Include="Assets\Projectile.cs" />
     <Compile Include="Assets\Scenes\Assets\GreenForest\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Utility\IDamageable.cs" />
     <Compile Include="Assets\Utility\SpinMe.cs" />
+    <Compile Include="Assets\VFX\Fireball_VFX\Projectile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\SETUP &amp; STANDARDS.txt" />

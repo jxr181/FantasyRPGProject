@@ -6,6 +6,7 @@ public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] float maxHealthPoints = 100f;
 
+    GameObject currentTarget;
     float currentHealthPoints = 100f;
 
     public float healthAsPercentage
