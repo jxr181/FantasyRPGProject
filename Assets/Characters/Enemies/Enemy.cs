@@ -10,15 +10,18 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] float damagePerShot = 9f;
     [SerializeField] float secondsBetweenShots;
 
-    [SerializeField] float attackRadius = 4f;
-    [SerializeField] float chaseRadius = 4f;
+    [SerializeField] float attackRadius;
+    [SerializeField] float chaseRadius;
+    [SerializeField] float stopChaseRadius;
     [SerializeField] Vector3 aimOffset = new Vector3(0, 1f, 0);
-    float currentHealthPoints = 100f;
+    
 
     AICharacterControl aiCharacterControl = null;
+    float currentHealthPoints;
     GameObject player = null;
 
     bool isAttacking = false;
+    bool isChasing = false;
 
     public float healthAsPercentage
     {
@@ -32,9 +35,10 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         player = GameObject.FindGameObjectWithTag("Player");
         aiCharacterControl = GetComponent<AICharacterControl>();
+        currentHealthPoints = maxHealthPoints;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
@@ -43,19 +47,22 @@ public class Enemy : MonoBehaviour, IDamageable
             isAttacking = true;
             InvokeRepeating("SpawnProjectile", 0f, secondsBetweenShots);  // TODO Switch to Coroutines
         }
-        else
+
+        if (distanceToPlayer > attackRadius && isAttacking)
         {
             isAttacking = false;
             CancelInvoke();
         }
 
 
-        if (distanceToPlayer <= chaseRadius)
+        if (distanceToPlayer <= chaseRadius && !isChasing)
         {
+            isChasing = true;
             aiCharacterControl.SetTarget(player.transform);
         }
-        else
+        else if (distanceToPlayer >= stopChaseRadius && isChasing)
         {
+            isChasing = false;
             aiCharacterControl.SetTarget(transform);
         }
     }
@@ -63,6 +70,10 @@ public class Enemy : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
+        if (currentHealthPoints <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     void SpawnProjectile()
@@ -83,5 +94,7 @@ public class Enemy : MonoBehaviour, IDamageable
         Gizmos.DrawWireSphere(transform.position, attackRadius);
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, chaseRadius);
+        Gizmos.color = Color.black;
+        Gizmos.DrawWireSphere(transform.position, stopChaseRadius);
     }
 }
