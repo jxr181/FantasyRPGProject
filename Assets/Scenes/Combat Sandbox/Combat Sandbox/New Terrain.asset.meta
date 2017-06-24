@@ -1,8 +1,6 @@
 fileFormatVersion: 2
-guid: 0073ed9e74c51de4abaeb0863f2728c9
-labels:
-- SceneSetup
-timeCreated: 1497147417
+guid: 936dc400be4f21f46847da726739fac8
+timeCreated: 1497991091
 licenseType: Pro
 NativeFormatImporter:
   mainObjectFileID: 15600000
