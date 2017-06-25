@@ -12,7 +12,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] float maxAttackRange = 2f;
 
     GameObject currentTarget;
-    float currentHealthPoints;
+    public float currentHealthPoints;
     float lastHitTime;
 
     CameraRaycaster cameraRaycaster;
