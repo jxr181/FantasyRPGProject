@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] float damagePerHit = 10f;
     [SerializeField] float minTimeBetweenHits = 0.5f;
 
+    [SerializeField] Weapon weaponInUse;
     [SerializeField] float maxAttackRange = 2f;
 
     GameObject currentTarget;
@@ -28,9 +30,22 @@ public class Player : MonoBehaviour, IDamageable
 
     void Start()
     {
+        RegisterForMouseClick();
+        currentHealthPoints = maxHealthPoints;
+        PutWeaponInHand();
+    }
+
+    private void PutWeaponInHand()
+    {
+        var weaponPrefab = weaponInUse.GetWeaponPrefab();
+        var weapon = Instantiate(weaponPrefab);
+        // TODO Move to correct place and child to hand
+    }
+
+    private void RegisterForMouseClick()
+    {
         cameraRaycaster = FindObjectOfType<CameraRaycaster>();
         cameraRaycaster.notifyMouseClickObservers += OnMouseClick;
-        currentHealthPoints = maxHealthPoints;
     }
 
     void OnMouseClick(RaycastHit raycastHit, int layerHit)
