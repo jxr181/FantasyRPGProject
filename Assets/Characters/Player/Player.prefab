@@ -698,7 +698,8 @@ MonoBehaviour:
   enemyLayer: 9
   damagePerHit: 50
   minTimeBetweenHits: 1
-  weaponInUse: {fileID: 11400000, guid: 2450805f61a04f542b74e448f4f8e684, type: 2}
+  weaponSocket: {fileID: 1734777673852148}
+  weaponInUse: {fileID: 11400000, guid: 9d3203f843db8124b934314fb68efaf7, type: 2}
   maxAttackRange: 2
   currentHealthPoints: 0
 --- !u!114 &114793335721260212

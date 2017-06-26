@@ -10,6 +10,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] float damagePerHit = 10f;
     [SerializeField] float minTimeBetweenHits = 0.5f;
 
+    [SerializeField] GameObject weaponSocket;
     [SerializeField] Weapon weaponInUse;
     [SerializeField] float maxAttackRange = 2f;
 
@@ -38,8 +39,9 @@ public class Player : MonoBehaviour, IDamageable
     private void PutWeaponInHand()
     {
         var weaponPrefab = weaponInUse.GetWeaponPrefab();
-        var weapon = Instantiate(weaponPrefab);
-        // TODO Move to correct place and child to hand
+        var weapon = Instantiate(weaponPrefab, weaponSocket.transform);
+        weapon.transform.localPosition = weaponInUse.gripTransform.localPosition;
+        weapon.transform.localRotation = weaponInUse.gripTransform.localRotation;
     }
 
     private void RegisterForMouseClick()
